@@ -1,5 +1,8 @@
 # ゼロから作る Deep Learning ❷
 
+- 원서 구매 후 사용 편의를 위해 직접 번역하는 repo
+- 구매처: [O'Reilly Japan](https://www.oreilly.co.jp/books/9784873118369/) (ebook으로 구매, DRM Free)
+
 ---
 
 ![表紙](https://raw.githubusercontent.com/oreilly-japan/deep-learning-from-scratch-2/images/deep-learning-from-scratch-2.png)
@@ -10,32 +13,32 @@
 
 ## ファイル構成
 
-|フォルダ名 |説明                         |
+|폴더명 |설명                         |
 |:--        |:--                          |
-|ch01       |1章で使用するソースコード    |
-|ch02       |2章で使用するソースコード    |
+|ch01       |1장에서 사용되는 소스 코드    |
+|ch02       |2장에서 사용되는 소스 코드    |
 |...        |...                          |
-|ch08       |8章で使用するソースコード    |
-|common     |共通で使用するソースコード   |
-|dataset    |データセット用のソースコード | 
+|ch08       |8장에서 사용되는 소스 코드    |
+|common     |공통으로 사용되는 소스 코드   |
+|dataset    |데이터셋용 소스 코드 | 
 
-ソースコードの解説は本書籍をご覧ください。
+소스 코드의 설명은 도서를 참고
 
 > 学習済みの重みファイル（6章、7章で使用）は下記URLから入手可能です。
 
 > <https://www.oreilly.co.jp/pub/9784873118369/BetterRnnlm.pkl>
 
-## 必要条件
+## Dependency
 ソースコードを実行するには、下記のソフトウェアがインストールされている必要があります。
 
 * Python 3.x
 * NumPy
 * Matplotlib
-* CuPy（オプション）
+* [CuPy](https://github.com/cupy/cupy) (옵션, NumPy-like API accelerated with CUDA)
 
-※Pythonのバージョンは、3系を利用します。
+※ Python 버전은 3.x 사용.
 
-## 実行方法
+## 실행 방법
 
 各章のフォルダへ移動して、Pythonコマンドを実行します。
 
@@ -47,7 +50,7 @@ $ cd ../ch05
 $ python train_custom_loop.py
 ```
 
-## ライセンス
+## 라이센스
 
 本リポジトリのソースコードは[MITライセンス](http://www.opensource.org/licenses/MIT)です。
 商用・非商用問わず、自由にご利用ください。
