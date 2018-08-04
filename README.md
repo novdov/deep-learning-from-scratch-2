@@ -25,7 +25,6 @@
 소스 코드의 설명은 도서를 참고
 
 > 학습 완료된 가중치(6, 7장에서 사용)는 아래 URL에서 다운로드 가능 
-
 > <https://www.oreilly.co.jp/pub/9784873118369/BetterRnnlm.pkl>
 
 ## Dependency
@@ -40,7 +39,7 @@
 
 ## 실행 방법
 
-各章のフォルダへ移動して、Pythonコマンドを実行します。
+각 장의 폴더로 이동해서 파이썬 코드를 실행
 
 ```
 $ cd ch01
@@ -52,12 +51,12 @@ $ python train_custom_loop.py
 
 ## 라이센스
 
-本リポジトリのソースコードは[MITライセンス](http://www.opensource.org/licenses/MIT)です。
-商用・非商用問わず、自由にご利用ください。
+이 repo의 소스 코드는 [MIT 라이센스](http://www.opensource.org/licenses/MIT)를 따름.
+상업・비상업 관계 없이 자유롭게 사용 가능
 
-## 正誤表
+## 정오표
 
-本書の正誤情報は以下のページで公開しています。
+본 도서의 정오표는 아래에 공개되어 있음
 
 https://github.com/oreilly-japan/deep-learning-from-scratch-2/wiki/errata
 
