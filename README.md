@@ -1,5 +1,4 @@
-# ゼロから作る Deep Learning ❷
-# 밑바닥부터 시작하는 딥러닝 ❷ - 자연어처리편
+# ゼロから作る Deep Learning ❷ (밑바닥부터 시작하는 딥러닝 ❷)
 
 - 원서 구매 후 학습/사용 편의를 위해 직접 번역해서 사용하고 있습니다.
 - 구매처: [O'Reilly Japan](https://www.oreilly.co.jp/books/9784873118369/) (ebook으로 구매, DRM Free)
