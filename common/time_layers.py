@@ -99,9 +99,9 @@ class LSTM:
 
         Parameters
         ----------
-        Wx: 入力`x`用の重みパラーメタ（4つ分の重みをまとめる）
-        Wh: 隠れ状態`h`用の重みパラメータ（4つ分の重みをまとめる）
-        b: バイアス（4つ分のバイアスをまとめる）
+        Wx: 입력 'x'를 위한 가중치 파라미터
+        Wh: 히든 스테이트 'h'를 위한 가중치 파라미터
+        b: 
         '''
         self.params = [Wx, Wh, b]
         self.grads = [np.zeros_like(Wx), np.zeros_like(Wh), np.zeros_like(b)]
@@ -302,19 +302,19 @@ class TimeSoftmaxWithLoss:
     def forward(self, xs, ts):
         N, T, V = xs.shape
 
-        if ts.ndim == 3:  # 教師ラベルがone-hotベクトルの場合
+        if ts.ndim == 3:  # 레이블이 one-hot 벡터일 경우
             ts = ts.argmax(axis=2)
 
         mask = (ts != self.ignore_label)
 
-        # バッチ分と時系列分をまとめる（reshape）
+        # 배치만큼 reshape
         xs = xs.reshape(N * T, V)
         ts = ts.reshape(N * T)
         mask = mask.reshape(N * T)
 
         ys = softmax(xs)
         ls = np.log(ys[np.arange(N * T), ts])
-        ls *= mask  # ignore_labelに該当するデータは損失を0にする
+        ls *= mask  # ignore_label에 할당할 데이터는 오차를 0으로
         loss = -np.sum(ls)
         loss /= mask.sum()
 
@@ -328,7 +328,7 @@ class TimeSoftmaxWithLoss:
         dx[np.arange(N * T), ts] -= 1
         dx *= dout
         dx /= mask.sum()
-        dx *= mask[:, np.newaxis]  # ignore_labelに該当するデータは勾配を0にする
+        dx *= mask[:, np.newaxis]  # ignore_label에 할당할 데이터는 오차를 0으로
 
         dx = dx.reshape((N, T, V))
 
