@@ -385,15 +385,15 @@ class TimeBiLSTM:
         return dxs
 
 # ====================================================================== #
-# 以下に示すレイヤは、本書で説明をおこなっていないレイヤの実装もしくは
-# 処理速度よりも分かりやすさを優先したレイヤの実装です。
+# 아래의 레이어는 본 도서에서 설명하지 않는 레이어의 구현 혹은
+# 처리속도를 더 개선하기 위한 레이어 구현입니다.
 #
-# TimeSigmoidWithLoss: 時系列データのためのシグモイド損失レイヤ
-# GRU: GRUレイヤ
-# TimeGRU: 時系列データのためのGRUレイヤ
-# BiTimeLSTM: 双方向LSTMレイヤ
-# Simple_TimeSoftmaxWithLoss：単純なTimeSoftmaxWithLossレイヤの実装
-# Simple_TimeAffine: 単純なTimeAffineレイヤの実装
+# TimeSigmoidWithLoss: 시계열 데이터의 시그모이드 손실 계산 레이어
+# GRU: GRU레이어
+# TimeGRU: 시계열 데이터를 위한 GRU 레이어
+# BiTimeLSTM: 양방향 LSTM 레이어
+# Simple_TimeSoftmaxWithLoss：간단한 TimeSoftmaxWithLoss 레이어 구현
+# Simple_TimeAffine: 간단한 TimeAffine 레이어 
 # ====================================================================== #
 
 
