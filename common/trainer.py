@@ -26,7 +26,7 @@ class Trainer:
 
         start_time = time.time()
         for epoch in range(max_epoch):
-            # シャッフル
+            # 셔플링
             idx = numpy.random.permutation(numpy.arange(data_size))
             x = x[idx]
             t = t[idx]
@@ -35,17 +35,17 @@ class Trainer:
                 batch_x = x[iters*batch_size:(iters+1)*batch_size]
                 batch_t = t[iters*batch_size:(iters+1)*batch_size]
 
-                # 勾配を求め、パラメータを更新
+                # 그래디언트를 계산하고 파라미터를 갱신합니다.
                 loss = model.forward(batch_x, batch_t)
                 model.backward()
-                params, grads = remove_duplicate(model.params, model.grads)  # 共有された重みを1つに集約
+                params, grads = remove_duplicate(model.params, model.grads)  # 공유한 가중치를 하나로 요약
                 if max_grad is not None:
                     clip_grads(grads, max_grad)
                 optimizer.update(params, grads)
                 total_loss += loss
                 loss_count += 1
 
-                # 評価
+                # 
                 if (eval_interval is not None) and (iters % eval_interval) == 0:
                     avg_loss = total_loss / loss_count
                     elapsed_time = time.time() - start_time
@@ -81,7 +81,7 @@ class RnnlmTrainer:
 
         data_size = len(x)
         jump = data_size // batch_size
-        offsets = [i * jump for i in range(batch_size)]  # バッチの各サンプルの読み込み開始位置
+        offsets = [i * jump for i in range(batch_size)]  # 배치 내 각 샘플를 읽어 올 오프셋
 
         for time in range(time_size):
             for i, offset in enumerate(offsets):
@@ -106,17 +106,17 @@ class RnnlmTrainer:
             for iters in range(max_iters):
                 batch_x, batch_t = self.get_batch(xs, ts, batch_size, time_size)
 
-                # 勾配を求め、パラメータを更新
+                # 그래디언트를 계산하고 파라미터를 갱신합니다.
                 loss = model.forward(batch_x, batch_t)
                 model.backward()
-                params, grads = remove_duplicate(model.params, model.grads)  # 共有された重みを1つに集約
+                params, grads = remove_duplicate(model.params, model.grads)  # 공유한 가중치를 하나로 요약
                 if max_grad is not None:
                     clip_grads(grads, max_grad)
                 optimizer.update(params, grads)
                 total_loss += loss
                 loss_count += 1
 
-                # パープレキシティの評価
+                # perplexity를 평가합니다.
                 if (eval_interval is not None) and (iters % eval_interval) == 0:
                     ppl = np.exp(total_loss / loss_count)
                     elapsed_time = time.time() - start_time
@@ -138,10 +138,10 @@ class RnnlmTrainer:
 
 
 def remove_duplicate(params, grads):
-    '''
-    パラメータ配列中の重複する重みをひとつに集約し、
-    その重みに対応する勾配を加算する
-    '''
+    """
+    파라미터 배열 중 중복되는 가중치를 모으고,
+    그 가중치에 대응하는 그래디언트를 더합니다.
+    """
     params, grads = params[:], grads[:]  # copy list
 
     while True:
@@ -150,13 +150,13 @@ def remove_duplicate(params, grads):
 
         for i in range(0, L - 1):
             for j in range(i + 1, L):
-                # 重みを共有する場合
+                # 가중치를 공유하는 경우
                 if params[i] is params[j]:
-                    grads[i] += grads[j]  # 勾配の加算
+                    grads[i] += grads[j]  # 그래디언트를 가산합니다.
                     find_flg = True
                     params.pop(j)
                     grads.pop(j)
-                # 転置行列として重みを共有する場合（weight tying）
+                # 전치행렬로 가중치를 공유하는 경우 （weight tying）
                 elif params[i].ndim == 2 and params[j].ndim == 2 and \
                      params[i].T.shape == params[j].shape and np.all(params[i].T == params[j]):
                     grads[i] += grads[j].T
