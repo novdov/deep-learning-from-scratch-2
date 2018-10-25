@@ -44,7 +44,7 @@ def most_similar(query, word_to_id, id_to_word, word_matrix, top=5):
     :param id_to_word: 単語IDから単語へのディクショナリ
     :param word_matrix: 単語ベクトルをまとめた行列。各行に対応する単語のベクトルが格納されていることを想定する
     :param top: 上位何位まで表示するか
-    '''
+    """
     if query not in word_to_id:
         print('%s is not found' % query)
         return
@@ -71,11 +71,12 @@ def most_similar(query, word_to_id, id_to_word, word_matrix, top=5):
 
 
 def convert_one_hot(corpus, vocab_size):
-    '''one-hot表現への変換
+    """
+    one-hot encoding으로 변환하는 메서드
 
-    :param corpus: 単語IDのリスト（1次元もしくは2次元のNumPy配列）
-    :param vocab_size: 語彙数
-    :return: one-hot表現（2次元もしくは3次元のNumPy配列）
+    :param corpus: 단어 ID 리스트（1D or 2D Numpy array）
+    :param vocab_size: 단어 수
+    :return: one-hot vector（2D or 3D Numpy array）
     '''
     N = corpus.shape[0]
 
