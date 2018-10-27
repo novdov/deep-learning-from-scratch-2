@@ -10,7 +10,7 @@ class Rnnlm(BaseModel):
         V, D, H = vocab_size, wordvec_size, hidden_size
         rn = np.random.randn
 
-        # 重みの初期化
+        # 파라미터를 초기화합니다.
         embed_W = (rn(V, D) / 100).astype('f')
         lstm_Wx = (rn(D, 4 * H) / np.sqrt(D)).astype('f')
         lstm_Wh = (rn(H, 4 * H) / np.sqrt(H)).astype('f')
@@ -18,7 +18,7 @@ class Rnnlm(BaseModel):
         affine_W = (rn(H, V) / np.sqrt(H)).astype('f')
         affine_b = np.zeros(V).astype('f')
 
-        # レイヤの生成
+        # 레이어를 생성합니다.
         self.layers = [
             TimeEmbedding(embed_W),
             TimeLSTM(lstm_Wx, lstm_Wh, lstm_b, stateful=True),
@@ -27,7 +27,7 @@ class Rnnlm(BaseModel):
         self.loss_layer = TimeSoftmaxWithLoss()
         self.lstm_layer = self.layers[1]
 
-        # すべての重みと勾配をリストにまとめる
+        # 모든 파라미터와 그래디언트를 리스트에 저장합니다.
         self.params, self.grads = [], []
         for layer in self.layers:
             self.params += layer.params
