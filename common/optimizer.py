@@ -6,7 +6,7 @@ from common.np import *
 
 class SGD:
     '''
-    確率的勾配降下法（Stochastic Gradient Descent）
+    Stochastic Gradient Descent
     '''
     def __init__(self, lr=0.01):
         self.lr = lr
@@ -17,9 +17,9 @@ class SGD:
 
 
 class Momentum:
-    '''
+    """
     Momentum SGD
-    '''
+    """
     def __init__(self, lr=0.01, momentum=0.9):
         self.lr = lr
         self.momentum = momentum
@@ -37,9 +37,9 @@ class Momentum:
 
 
 class Nesterov:
-    '''
+    """
     Nesterov's Accelerated Gradient (http://arxiv.org/abs/1212.0901)
-    '''
+    """
     def __init__(self, lr=0.01, momentum=0.9):
         self.lr = lr
         self.momentum = momentum
@@ -59,9 +59,9 @@ class Nesterov:
 
 
 class AdaGrad:
-    '''
+    """
     AdaGrad
-    '''
+    """
     def __init__(self, lr=0.01):
         self.lr = lr
         self.h = None
@@ -78,9 +78,9 @@ class AdaGrad:
 
 
 class RMSprop:
-    '''
+    """
     RMSprop
-    '''
+    """
     def __init__(self, lr=0.01, decay_rate = 0.99):
         self.lr = lr
         self.decay_rate = decay_rate
@@ -99,9 +99,9 @@ class RMSprop:
 
 
 class Adam:
-    '''
+    """
     Adam (http://arxiv.org/abs/1412.6980v8)
-    '''
+    """
     def __init__(self, lr=0.001, beta1=0.9, beta2=0.999):
         self.lr = lr
         self.beta1 = beta1
